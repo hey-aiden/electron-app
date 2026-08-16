@@ -62,3 +62,15 @@ allowBuilds:
   - `ls node_modules/electron/dist/` 或 `cat node_modules/electron/path.txt` —— 判断 Electron 二进制是否已下载
 - 排障直觉：看到 `ERR_PNPM_IGNORED_BUILDS`，第一时间查 `pnpm-workspace.yaml` / `package.json` 里的 pnpm 构建白名单配置，而不是急着看 Electron 代码。
 - 常见诱因：脚手架模板生成 `allowBuilds` 时残留占位符（`create-electron-vite` 一类模板），初始化后未回填。
+
+
+## 设置镜像
+
+### 设置 Electron 下载镜像
+export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
+
+### 同时设置 esbuild 镜像
+export ESBUILD_BINARY_PATH_MIRROR="https://npmmirror.com/mirrors/esbuild/"
+
+### 然后重新安装
+pnpm install

@@ -2,26 +2,28 @@
  * 【预加载脚本】—— 在这里暴露 API
  */
 
-
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
-const api = {}
+const api = {
+    getCount: (): Promise<number> => ipcRenderer.invoke('get-count'),
+    setCount: (count: number): Promise<number> => ipcRenderer.invoke('set-count', count)
+}
 
 // Use `contextBridge` APIs to expose Electron APIs to
 // renderer only if context isolation is enabled, otherwise
 // just add to the DOM global.
 if (process.contextIsolated) {
-  try {
-    contextBridge.exposeInMainWorld('electron', electronAPI)
-    contextBridge.exposeInMainWorld('api', api)
-  } catch (error) {
-    console.error(error)
-  }
+    try {
+        contextBridge.exposeInMainWorld('electron', electronAPI)
+        contextBridge.exposeInMainWorld('electronAPI', api)
+    } catch (error) {
+        console.error(error)
+    }
 } else {
-  // @ts-ignore (define in dts)
-  window.electron = electronAPI
-  // @ts-ignore (define in dts)
-  window.api = api
+    // @ts-ignore (define in dts)
+    window.electron = electronAPI
+    // @ts-ignore (define in dts)
+    window.electronAPI = api
 }
