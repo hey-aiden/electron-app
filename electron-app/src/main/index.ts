@@ -15,7 +15,7 @@ import icon from '../../resources/icon.png?asset'
 
 import { InitCountManage } from './countManage'
 
-app.setPath("userData", join(__dirname, '../temp'))
+app.setPath('userData', join(__dirname, '../temp'))
 
 InitCountManage()
 
@@ -40,7 +40,7 @@ function createWindow(): void {
      *
      */
     mainWindow.on('ready-to-show', () => {
-        mainWindow.setTitle('应用已就绪')
+        mainWindow.setTitle('first electron app')
         mainWindow.show()
     })
 

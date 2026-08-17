@@ -18,7 +18,7 @@ function getFilePath(): string {
 }
 
 export function InitCountManage(): void {
-    console.log('创建count-mange')
+    console.log('初始化count-mange')
 
     /**
      * 注册IPC通信函数 - ipcMain.handle 是异步的，会自动返回 Promise

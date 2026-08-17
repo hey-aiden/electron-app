@@ -8,8 +8,9 @@ export default defineConfig({
     renderer: {
         resolve: {
             alias: {
-                '@renderer': resolve('src/renderer/src')
-            }
+                '@client': resolve('src/renderer/src')
+            },
+            extensions: ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json', '.vue']
         },
         plugins: [vue()]
     }

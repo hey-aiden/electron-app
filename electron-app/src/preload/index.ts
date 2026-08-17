@@ -18,6 +18,7 @@ if (process.contextIsolated) {
     try {
         contextBridge.exposeInMainWorld('electron', electronAPI)
         contextBridge.exposeInMainWorld('electronAPI', api)
+        console.log('注册IPC执行函数')
     } catch (error) {
         console.error(error)
     }

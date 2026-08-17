@@ -1,19 +1,5 @@
 <template>
-    <div>{{ count }}</div>
-    <button @click.stop="increment">+</button>
-    <button @click.stop="decrement">-</button>
-    <p class="tip">Please try pressing <code>F12</code> to open the devTool</p>
-    <div class="actions">
-        <div class="action">
-            <a href="https://electron-vite.org/" target="_blank" rel="noreferrer">Documentation</a>
-        </div>
-        <div class="action">
-            <a target="_blank" rel="noreferrer" @click="ipcHandle">Send IPC</a>
-        </div>
-    </div>
-    <div>
-        <a href="https://www.baidu.com" target="_blank" rel="noreferrer">百度一下</a>
-    </div>
+    <RouterView />
     <Versions />
 </template>
 
