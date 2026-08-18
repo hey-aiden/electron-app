@@ -8,7 +8,12 @@ import { electronAPI } from '@electron-toolkit/preload'
 // Custom APIs for renderer
 const api = {
     getCount: (): Promise<number> => ipcRenderer.invoke('get-count'),
-    setCount: (count: number): Promise<number> => ipcRenderer.invoke('set-count', count)
+    setCount: (count: number): Promise<number> => ipcRenderer.invoke('set-count', count),
+    getCpuStats: (): Promise<string> => ipcRenderer.invoke('get-cpu-stats'),
+    getCpuStatus: (): Promise<string> => ipcRenderer.invoke('get-cpu-status'),
+    onInitData: (cb: (data: ElectronUser) => void) => {
+        ipcRenderer.on('init-data', (_e, data) => cb(data))
+    }
 }
 
 // Use `contextBridge` APIs to expose Electron APIs to

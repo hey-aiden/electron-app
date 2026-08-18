@@ -6,6 +6,9 @@ declare global {
         electronAPI: {
             getCount: () => Promise<number>
             setCount: (count: number) => Promise<number>
+            getCpuStats: () => Promise<string>
+            getCpuStatus: () => Promise<string>
+            onInitData: (callback: (data: ElectronUser) => void) => void
         }
     }
 }

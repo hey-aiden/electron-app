@@ -1,0 +1,3 @@
+interface ElectronUser {
+    user: string
+}
